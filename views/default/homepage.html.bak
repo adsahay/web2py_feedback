@@ -1,0 +1,22 @@
+{{extend 'layout.html'}}
+<h2>Radbox >> Feedback</h2>
+<p style="color:#ae2a11;">We highly value your feedback(s). Feel free to shoot your questions, suggestion, bug reports etc on us.</p>
+
+<div id="searchtext">{{=form}}</div>
+
+<div id="feedback"><p> {{=A('Add your own feedback', _href="http://127.0.0.1:8000/feedback/default/add_feedback")}}</div><br /><br /><br />
+
+
+<div id="homepage">
+{{for r in post:}}
+<a href="{{=URL(request.application, 'default', 'vote', vars={'id':r.feedback.id, 'key':'up'})}}"><img src="http://127.0.0.1:8000/feedback/static/images/thumbsup.jpg" alt="vote" /></a> {{=r.feedback.vote_count}}
+<a href="{{=URL(request.application, 'default', 'vote', vars={'id':r.feedback.id, 'key':'down'})}}"><img src="http://127.0.0.1:8000/feedback/static/images/thumbsdown.jpg" alt="vote" /></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+{{=A(r.feedback.header, _href='http://127.0.0.1:8000/feedback/default/add_response/'+ str(r.feedback.id))}} ({{=r.feedback.category}})
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{=r.feedback.message}}</p> 
+<blockquote><b>{{=r.feedback.category}}</b> Posted By: {{=r.auth_user.first_name}} {{=r.auth_user.last_name}} | {{=r.feedback.created_on}} | {{=A('Comments (' + str(r._extra['COUNT(response.id)']) + ')', _href='http://127.0.0.1:8000/feedback/default/add_response/' + str(r.feedback.id) + '#comments')}} | Status - {{=r.feedback.status}}</blockquote>
+{{pass}}
+</div>
+
+
+{{=BEAUTIFY(request.vars)}}

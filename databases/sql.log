@@ -1,0 +1,207 @@
+timestamp: 2010-09-16T16:28:22.432903
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512)
+);
+success!
+timestamp: 2010-09-16T16:28:22.570623
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2010-09-16T16:28:22.702635
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2010-09-16T16:28:22.829284
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2010-09-16T16:28:22.974751
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2010-09-22T11:59:27.402064
+CREATE TABLE feedback(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    status CHAR(512) NOT NULL DEFAULT 'Open',
+    category CHAR(512) NOT NULL DEFAULT 'Idea',
+    header CHAR(512) NOT NULL,
+    message TEXT NOT NULL,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2010-09-22T13:08:14.613068
+CREATE TABLE add_feedback(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    status CHAR(512) NOT NULL DEFAULT 'Open',
+    category CHAR(512) NOT NULL DEFAULT 'Idea',
+    header CHAR(512) NOT NULL,
+    message TEXT NOT NULL,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2010-09-22T14:23:25.773332
+CREATE TABLE add_response(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    feedback_id INTEGER REFERENCES add_feedback(id) ON DELETE CASCADE,
+    comment TEXT NOT NULL,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2010-09-22T14:41:56.379041
+CREATE TABLE add_vote(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    feedback_id INTEGER REFERENCES add_feedback(id) ON DELETE CASCADE,
+    vote_type CHAR(512)
+);
+success!
+timestamp: 2010-09-22T15:49:30.894252
+CREATE TABLE response(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    feedback_id INTEGER REFERENCES feedback(id) ON DELETE CASCADE,
+    comment TEXT NOT NULL,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2010-09-22T15:49:31.096093
+CREATE TABLE votemap(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    feedback_id INTEGER REFERENCES feedback(id) ON DELETE CASCADE,
+    vote_type CHAR(512),
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2010-09-24T12:29:13.952614
+CREATE TABLE auth_user(
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512)
+);
+success!
+timestamp: 2010-09-24T12:29:14.476036
+CREATE TABLE auth_group(
+    id SERIAL PRIMARY KEY,
+    role VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2010-09-24T12:29:14.704829
+CREATE TABLE auth_membership(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2010-09-24T12:29:14.852288
+CREATE TABLE auth_permission(
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2010-09-24T12:29:15.076256
+CREATE TABLE auth_event(
+    id SERIAL PRIMARY KEY,
+    time_stamp TIMESTAMP,
+    client_ip VARCHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2010-09-24T12:29:15.277460
+CREATE TABLE feedback(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    status VARCHAR(512) NOT NULL DEFAULT 'Open',
+    category VARCHAR(512) NOT NULL DEFAULT 'Idea',
+    header VARCHAR(512) NOT NULL,
+    message TEXT NOT NULL,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2010-09-24T12:29:15.492914
+CREATE TABLE response(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    feedback_id INTEGER REFERENCES feedback(id) ON DELETE CASCADE,
+    comment TEXT NOT NULL,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2010-09-24T12:29:15.665844
+CREATE TABLE votemap(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    feedback_id INTEGER REFERENCES feedback(id) ON DELETE CASCADE,
+    vote_type VARCHAR(512),
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2010-09-24T12:44:06.903355
+CREATE TABLE auth_user(
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512)
+);
+timestamp: 2010-09-24T12:44:45.860640
+CREATE TABLE auth_user(
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512)
+);
+timestamp: 2010-09-27T12:25:37.833735
+ALTER TABLE feedback ADD vote VARCHAR(512);
+timestamp: 2010-09-28T10:43:25.996378
+ALTER TABLE feedback ADD vote_count INTEGER;
+timestamp: 2010-09-28T10:43:26.082402
+ALTER TABLE feedback DROP COLUMN vote;
+timestamp: 2010-09-28T11:54:59.295763
+CREATE TABLE item(
+    id SERIAL PRIMARY KEY,
+    image VARCHAR(512),
+    votes INTEGER
+);
+success!

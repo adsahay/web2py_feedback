@@ -1,0 +1,22 @@
+(dp1
+S'comment'
+p2
+S'TEXT NOT NULL'
+p3
+sS'feedback_id'
+p4
+S'INTEGER REFERENCES feedback(id) ON DELETE CASCADE'
+p5
+sS'created_on'
+p6
+S'TIMESTAMP'
+p7
+sS'user_id'
+p8
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p9
+sS'id'
+p10
+S'SERIAL PRIMARY KEY'
+p11
+s.

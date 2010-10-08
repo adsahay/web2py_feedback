@@ -1,0 +1,4 @@
+
+{{extend 'layout.html'}}
+<h1>This is the default/list_items.html template</h1>
+{{=BEAUTIFY(response._vars)}}

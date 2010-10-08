@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+<h2>Enter your response below</h2>
+<p>{{for row in r:}}
+{{print row.header}}
+{{pass}}</p>
+{{=BEAUTIFY(request.vars)}}

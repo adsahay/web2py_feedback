@@ -1,0 +1,22 @@
+(dp1
+S'feedback_id'
+p2
+S'INTEGER REFERENCES feedback(id) ON DELETE CASCADE'
+p3
+sS'vote_type'
+p4
+S'VARCHAR(512)'
+p5
+sS'user_id'
+p6
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p7
+sS'id'
+p8
+S'SERIAL PRIMARY KEY'
+p9
+sS'created_on'
+p10
+S'TIMESTAMP'
+p11
+s.

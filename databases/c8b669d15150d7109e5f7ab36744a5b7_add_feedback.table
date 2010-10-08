@@ -1,0 +1,30 @@
+(dp1
+S'status'
+p2
+S'CHAR(512) NOT NULL'
+p3
+sS'category'
+p4
+S'CHAR(512) NOT NULL'
+p5
+sS'user_id'
+p6
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p7
+sS'header'
+p8
+S'CHAR(512) NOT NULL'
+p9
+sS'created_on'
+p10
+S'TIMESTAMP'
+p11
+sS'message'
+p12
+S'TEXT NOT NULL'
+p13
+sS'id'
+p14
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p15
+s.

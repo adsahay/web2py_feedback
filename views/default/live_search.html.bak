@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+
+<h2>Search feedback(s):</h2>
+<div id = "search">{{=form}}
+
+
+{{=BEAUTIFY(response.vars)}}

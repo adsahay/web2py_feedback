@@ -1,0 +1,34 @@
+(dp1
+S'status'
+p2
+S'VARCHAR(512) NOT NULL'
+p3
+sS'category'
+p4
+S'VARCHAR(512) NOT NULL'
+p5
+sS'user_id'
+p6
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p7
+sS'vote_count'
+p8
+S'INTEGER'
+p9
+sS'header'
+p10
+S'VARCHAR(512) NOT NULL'
+p11
+sS'created_on'
+p12
+S'TIMESTAMP'
+p13
+sS'message'
+p14
+S'TEXT NOT NULL'
+p15
+sS'id'
+p16
+S'SERIAL PRIMARY KEY'
+p17
+s.

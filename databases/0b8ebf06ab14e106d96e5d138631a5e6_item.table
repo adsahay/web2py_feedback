@@ -1,0 +1,14 @@
+(dp1
+S'image'
+p2
+S'VARCHAR(512)'
+p3
+sS'votes'
+p4
+S'INTEGER'
+p5
+sS'id'
+p6
+S'SERIAL PRIMARY KEY'
+p7
+s.

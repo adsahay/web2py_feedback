@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+<h2>Enter your feedback here</h2>
+<form enctype="multipart/form-date" action="{{=URL()}}" method="post">
+Subject : <input name="name" />
+Feedback : <input name="text" />
+<input type="submit" />
+{{=BEAUTIFY(response._vars)}}

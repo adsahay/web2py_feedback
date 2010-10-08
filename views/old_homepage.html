@@ -1,0 +1,65 @@
+{{extend 'layout.html'}}
+<h2>Radbox >> Feedback</h2>
+<p style="color:#ae2a11;">We highly value your feedback(s). Feel free to shoot your questions, suggestion, bug reports etc on us.</p>
+
+<div id="searchtext">{{=form}}</div>
+
+<div id="feedback"><p> {{=A('Add your own feedback', _href="http://127.0.0.1:8000/feedback/default/add_feedback")}}</div><br /><br /><br />
+
+
+<div id="homepage">
+{{for r in post:}}
+<a href="{{=URL(request.application, 'default', 'vote', vars={'id':r.feedback.id, 'key':'up'})}}"><img src="http://127.0.0.1:8000/feedback/static/images/thumbsup.jpg" alt="vote" /></a> {{=r.feedback.vote_count}}
+<a href="{{=URL(request.application, 'default', 'vote', vars={'id':r.feedback.id, 'key':'down'})}}"><img src="http://127.0.0.1:8000/feedback/static/images/thumbsdown.jpg" alt="vote" /></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+{{=A(r.feedback.header, _href='http://127.0.0.1:8000/feedback/default/add_response/'+ str(r.feedback.id))}} ({{=r.feedback.category}})
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{=r.feedback.message}}</p> 
+<blockquote><b>{{=r.feedback.category}}</b> Posted By: {{=r.auth_user.first_name}} {{=r.auth_user.last_name}} | {{=r.feedback.created_on}} | {{=A('Comments (' + str(r._extra['COUNT(response.id)']) + ')', _href='http://127.0.0.1:8000/feedback/default/add_response/' + str(r.feedback.id) + '#comments')}} | Status - {{=r.feedback.status}}</blockquote>
+{{pass}}
+</div>
+
+<!--<div id="searchresults">
+{{for result in results:}}
+<a href="{{=URL(request.application, 'default', 'vote', vars={'id':result.feedback.id, 'key':'up'})}}"><img src="http://127.0.0.1:8000/feedback/static/images/thumbsup.jpg" alt="vote" /></a> {{=result.feedback.vote_count}}
+<a href="{{=URL(request.application, 'default', 'vote', vars={'id':result.feedback.id, 'key':'down'})}}"><img src="http://127.0.0.1:8000/feedback/static/images/thumbsdown.jpg" alt="vote" /></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+{{=A(result.feedback.header, _href='http://127.0.0.1:8000/feedback/default/add_response/'+ str(result.feedback.id))}} ({{=result.feedback.category}})
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{=result.feedback.message}}</p>
+<blockquote><b>{{=result.feedback.category}}</b> Posted By: {{=result.auth_user.first_name}} {{=result.auth_user.last_name}} | {{=result.feedback.created_on}} | {{=A('Comments (' + str(result._extra['COUNT(response.id)']) + ')', _href='http://127.0.0.1:8000/feedback/default/add_response/' + str(result.feedback.id) + '#comments')}} | Status - {{=result.feedback.status}}</blockquote>
+{{pass}}
+</div>
+<script>
+jQuery(document).ready(function(){
+    jQuery('#feedback').hide();
+    jQuery('#searchresults').hide();
+    jQuery('#no_table_search').keydown(function(){
+        jQuery('#feedback').show();
+        jQuery('#searchresults').show();
+        jQuery('#homepage').hide(); });
+});
+
+
+/* jQuery('#searchresults').hide();
+jQuery(document).ready(function(){
+    //console.log($('#no_table_search').val());
+    //jQuery('#no_table_search').submit(function(){
+        console.log('keypress called!');        
+        /*$.ajax({
+            url: "{{=URL(request.application, 'default', 'homepage')}}",
+            data: "search="+$("#no_table_search").val(),
+            success: function(msg) {
+                console.log(msg.length);
+                $('#homepage').hide(); 
+                $('#searchresults').show();
+            }
+        });*/
+        ajax('homepage', ['no_table_search'], 'searchresults');
+        $('#homepage').hide(); 
+        $('#searchresults').show();
+        });
+        //jQuery('#searchresults').show();
+        //jQuery('#homepage').hide();});
+}); */    
+</script>
+-->
+{{=BEAUTIFY(request.vars)}}

@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+<h2>{{=feedback.header}}</h2>
+<p>{{=feedback.message}}</p>
+{{=form}}
+<br />
+<a id="comments"<h4>Past Comments:</h4></a>
+{{for r in responses:}}
+<p>{{=r.comment}}</p>
+<blockquote>{{=r.created_on}} {{=author.first_name}}</blockquote>
+{{pass}}
+<br />
+{{=BEAUTIFY(request.vars)}}

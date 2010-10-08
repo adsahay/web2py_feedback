@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+<h2>Radbox >> Feedback</h2> 
+<p style="color:#ae2a11;">We highly value your feedback(s). Feel free to shoot your questions, suggestion, bug reports etc on us.</p>
+{{for r in post:}}
+{{(str)r.id}}
+{{=A(r.header, _href='http://127.0.0.1:8000/feedback/default/add_response/' + r.id)}}
+<!-- <a style="font-size:16px; font-weight:bold;" >{{=r.header}}</a> ({{=r.category}}) -->
+<p>{{=r.message}}</p>
+<blockquote>{{=r.created_on}} &nbsp;&nbsp;&nbsp;&nbsp; Status - {{=r.status}}</blockquote>
+{{pass}}
+{{=BEAUTIFY(request.vars)}}
