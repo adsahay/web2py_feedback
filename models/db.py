@@ -12,8 +12,7 @@ if request.env.web2py_runtime_gae:            # if running on Google App Engine
     # from google.appengine.api.memcache import Client
     # session.connect(request, response, db = MEMDB(Client()))
 else:                                         # else use a normal relational database
-    #db = DAL('sqlite://storage.sqlite')       # if not, use SQLite or other DB
-    db = DAL('postgres://clip:clip@localhost:5432/clip')
+    db = DAL('sqlite://storage.sqlite')       # if not, use SQLite or other DB
 
 ## if no need for session
 # session.forget()
